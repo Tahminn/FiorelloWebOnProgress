@@ -1,0 +1,156 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "Fiorello - Shop";
+}
+
+<!-- HEADER END -->
+<main>
+
+    <section id="shop-list-title">
+        <div class="container py-4">
+            <div class="row py-5">
+                <div class="col-12">
+                    <h1>Shop List</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="shop-list">
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="product-item product-item-small text-center" data-id="popular">
+                        <div class="img">
+                            <a href="">
+                                <img src="img/shop-14-img.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="overlay d-flex flex-column justify-content-center">
+                            <div class="title mt-3">
+                                <h6>MAJESTY PALM</h6>
+                            </div>
+                            <div class="price">
+                                <span class="text-black-50">$259</span>
+                            </div>
+                            <div class="button mt-3">
+                                <button class="btn btn-danger rounded-0">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="product-item product-item-small text-center" data-id="popular">
+                        <div class="img">
+                            <a href="">
+                                <img src="img/shop-13-img.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="overlay d-flex flex-column justify-content-center">
+                            <div class="title mt-3">
+                                <h6>MAJESTY PALM</h6>
+                            </div>
+                            <div class="price">
+                                <span class="text-black-50">$259</span>
+                            </div>
+                            <div class="button mt-3">
+                                <button class="btn btn-danger rounded-0">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="product-item product-item-small text-center" data-id="popular">
+                        <div class="img">
+                            <a href="">
+                                <img src="img/shop-12-img.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="overlay d-flex flex-column justify-content-center">
+                            <div class="title mt-3">
+                                <h6>MAJESTY PALM</h6>
+                            </div>
+                            <div class="price">
+                                <span class="text-black-50">$259</span>
+                            </div>
+                            <div class="button mt-3">
+                                <button class="btn btn-danger rounded-0">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                    <div class="product-item product-item-small text-center" data-id="popular">
+                        <div class="img">
+                            <a href="">
+                                <img src="img/shop-11-img.jpg" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="overlay d-flex flex-column justify-content-center">
+                            <div class="title mt-3">
+                                <h6>MAJESTY PALM</h6>
+                            </div>
+                            <div class="price">
+                                <span class="text-black-50">$259</span>
+                            </div>
+                            <div class="button mt-3">
+                                <button class="btn btn-danger rounded-0">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section id="products">
+        <div class="container">
+            <input type="hidden" name="name" id="product-count" value="@ViewBag.ProductCount" />
+            <div class="row" id="product-catalog">
+                <partial name="_ProductsPartial">
+            </div>
+            <div class="more d-flex justify-content-center my-5">
+                <button id="load-more" class="btn btn-outline-primary" style="border-color:black; color:black">Load More</button>
+            </div>
+
+            <!-- PRODUCTS START -->
+
+            <section id="products">
+                <div class="container">
+                    
+                    <h3 class="py-5" style="display: flex;justify-content: center;">Categories</h3>
+                    <div class="row" style="justify-content: center;">
+                        <ul class="category d-none d-md-flex list-unstyled">
+                            <li><a href="" data-id="all">All</a></li>
+                            @foreach (var product in Model.Products.GroupBy(p => p.CategoryId).Select(p => p.First()))
+                            {
+                                <li>
+                                    <a href="" data-id="@product.Category.Name.ToLower()">@product.Category.Name.ToUpper()</a>
+                                </li>
+                            }
+                        </ul>
+                        @*@foreach (var product in Model.Products.GroupBy(p => p.CategoryId).Select(p => p.First()))
+                        {
+                            <div class="col-sm-6 col-md-4 col-lg-2 mt-3">
+                                <div class="product-item product-item-small text-center" data-id="@product.Category.Name.ToLower()">
+                                    <div class="img">
+                                        <a href="">
+                                            <img src="img/@product.ProductImages.Where(p=>p.IsMain).LastOrDefault().Image" class="img-fluid" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="title mt-3">
+                                        <h6>@product.Category.Name.ToUpper()</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        }*@
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- PRODUCTS END -->
+
+</main>
+<!-- FOOTER START -->
